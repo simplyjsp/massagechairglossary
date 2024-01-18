@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #000;
+    text-align: center;
+}
+
+.glossary-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    background-color: #f5f5dc;
+}
+
+input[type="text"]:hover {
+    background-color: #e6e6e6;
+}
+
+button {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e6b800;
+}
+
+.category-tabs {
+    width: calc(100% - 40px);
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-tab {
+    background-color: #f5f5dc;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.category-tab:hover {
+    background-color: #e6e6e6;
+}
+
+.glossary-result {
+    width: calc(100% - 40px);
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #f5f5dc;
+    color: #000;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.glossary-result p {
+    color: #555;
+    font-style: italic;
+}
