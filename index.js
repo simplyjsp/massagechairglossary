@@ -29,3 +29,70 @@ document.addEventListener('DOMContentLoaded', function() {
         "Easy Access Control Panel": "Allows you to control all aspects of your massage without reaching for a remote."
     }
 };
+
+
+    populateCategories(glossaryData);
+    const searchField = document.querySelector('.search-field');
+    const searchButton = document.querySelector('button');
+    const resultContainer = document.getElementById('glossaryResult');
+
+    searchButton.addEventListener('click', function() {
+        searchGlossary(searchField.value, glossaryData, resultContainer);
+    });
+
+    searchField.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchButton.click();
+        }
+    });
+});
+
+function populateCategories(glossaryData) {
+    const categoryContainer = document.querySelector('.category-tabs');
+    for (const category in glossaryData) {
+        const categoryTab = document.createElement('div');
+        categoryTab.className = 'category-tab';
+        categoryTab.innerHTML = `<i class="fa fa-tag"></i> ${category}`;
+        categoryTab.addEventListener('click', function() {
+            displayCategoryTerms(category, glossaryData[category]);
+        });
+        categoryContainer.appendChild(categoryTab);
+    }
+}
+
+function displayCategoryTerms(category, terms) {
+    const resultContainer = document.getElementById('glossaryResult');
+    resultContainer.innerHTML = `<h2>${category}</h2>`;
+    for (const term in terms) {
+        const termDiv = document.createElement('div');
+        termDiv.innerHTML = `<strong>${term}</strong>: ${terms[term]}`;
+        resultContainer.appendChild(termDiv);
+    }
+    resultContainer.style.display = 'block';
+}
+
+function searchGlossary(searchTerm, glossaryData, resultContainer) {
+    let found = false;
+    resultContainer.innerHTML = '';
+    searchTerm = searchTerm.toLowerCase();
+
+    for (const category in glossaryData) {
+        for (const term in glossaryData[category]) {
+            if (term.toLowerCase().includes(searchTerm)) {
+                if (!found) {
+                    resultContainer.innerHTML = `<h2>Search Results</h2>`;
+                    found = true;
+                }
+                const termDiv = document.createElement('div');
+                termDiv.innerHTML = `<strong>${term}</strong>: ${glossaryData[category][term]}`;
+                resultContainer.appendChild(termDiv);
+            }
+        }
+    }
+
+    if (!found) {
+        resultContainer.innerHTML = '<p>No results found.</p>';
+    }
+
+    resultContainer.style.display = 'block';
+}
